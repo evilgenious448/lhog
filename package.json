@@ -33,8 +33,8 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "preinstall": "bash preinstall.sh",
-    "postinstall": "bash postinstall.sh"
+    "heroku-prebuild": "bash preinstall.sh",
+    "heroku-postbuild": "bash postinstall.sh"
   },
   "eslintConfig": {
     "extends": "react-app"
