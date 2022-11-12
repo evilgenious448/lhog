@@ -6,6 +6,7 @@ import passport from 'koa-passport'
 import path from 'path'
 import serve from 'koa-static'
 import session from 'koa-session'
+import { PirateWars } from 'pirate_wars/src/Game'
 
 // Import the game objects without importing any React components.
 
@@ -31,13 +32,12 @@ const PORT = process.env.PORT || 8000;
 const db = new MongoStore(DB_URI)
 const dbWithCaching = new StorageCache(db, {cacheSize: 200})
 const server = Server({
-    games: [], 
+    games: [PirateWars], 
     generateCredentials: generateCredentials, 
     db: dbWithCaching,
     origins: [
         // Allow your game site to connect. 
-        // TODO: Update to deployed url
-        'https://www.mygame.domain',
+        'https://piratewars.herokuapp.com/',
         // Allow localhost to connect, except when NODE_ENV is 'production'.
         Origins.LOCALHOST_IN_DEVELOPMENT
     ],

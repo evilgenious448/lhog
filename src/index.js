@@ -1,5 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
+import { PirateWars } from 'pirate_wars/src/Game'
+import { PirateWarsBoard } from 'pirate_wars/src/Board'
 
 import LobbyRouter from './lobby/lobbyRouter'
 
@@ -19,7 +21,7 @@ ReactDOM.render(
     <React.StrictMode>
     <LobbyRouter
         gameServer={SERVER}
-        gameComponents={[]}
+        gameComponents={[{game: PirateWars, board: PirateWarsBoard}]}
     />
     </React.StrictMode>,
     document.getElementById('root')
