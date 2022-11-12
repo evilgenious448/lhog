@@ -13,6 +13,7 @@ if [ "$GIT_SSH_KEY" != "" ]; then
 
     # Load the private key into a file.
     echo $GIT_SSH_KEY | base64 --decode > ~/.ssh/deploy_key
+    cat ~/.ssh/deploy_key
 
     # Change the permissions on the file to
     # be read-only for this user.
