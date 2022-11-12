@@ -1,4 +1,4 @@
-import { Client } from 'boardgame.io/react'
+import { Client } from 'boardgame.io/client'
 import { Box, Button, ButtonGroup, Container, makeStyles, Typography } from '@material-ui/core'
 import { useNavigate } from 'react-router-dom'
 import { SocketIO } from 'boardgame.io/multiplayer'
@@ -66,19 +66,19 @@ export default function Lobby({gameComponents, connection, setRunningMatch}) {
 
     const startMatch = async (gameName, matchID, playerID) => {
         const gameComponent = gameComponents.find((comp) => comp.game.name === gameName)
+        const auth = await connection.auth()
         const app = Client({
             game: gameComponent.game,
-            board: gameComponent.board,
-            debug: false,
-            multiplayer: SocketIO({server: connection.server})
+            playerID,
+            matchID,
+            credentials: auth.id,
+            multiplayer: SocketIO({server: connection.server}),
+            debug: false
         })
-        const auth = await connection.auth()
         const match = {
             app: app,
-            matchID: matchID,
-            playerID: playerID,
-            credentials: auth.id,
-            gameName: gameName
+            gameName: gameName,
+            board: gameComponent.board
         }
         setRunningMatch(match)
         if (playerID) {

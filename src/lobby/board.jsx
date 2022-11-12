@@ -17,17 +17,14 @@ export default function Board({runningMatch}) {
     useEffect(() => {
         if (!runningMatch) {
             navigate('/')
+        } else {
+            new runningMatch.board(document.getElementById('running-match'), runningMatch.app)
         }
-    })
+    }, [runningMatch, navigate])
 
     if (runningMatch) {
         return (
-            <div className={classes.root}>
-                <runningMatch.app 
-                    matchID={runningMatch.matchID}
-                    playerID={runningMatch.playerID}
-                    credentials={runningMatch.credentials}
-                />
+            <div className={classes.root} id="running-match">
             </div>
         )
     } else {

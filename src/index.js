@@ -1,9 +1,8 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
+import { PirateWars } from 'pirate_wars/src/Game'
+import { PirateWarsBoard } from 'pirate_wars/src/Board'
 
-import { WattMatrixTable, WattMatrix } from 'wattmatrix'
-import { GembalayaTable, Gembalaya } from 'gembalaya'
-import { CubeNations, CubeNationsTable } from 'cubenations'
 import LobbyRouter from './lobby/lobbyRouter'
 
 import './index.css'
@@ -22,9 +21,7 @@ ReactDOM.render(
     <React.StrictMode>
     <LobbyRouter
         gameServer={SERVER}
-        gameComponents={[{game: WattMatrix, board: WattMatrixTable}, 
-                         {game: Gembalaya, board: GembalayaTable}, 
-                         {game: CubeNations, board: CubeNationsTable}]}
+        gameComponents={[{game: PirateWars, board: PirateWarsBoard}]}
     />
     </React.StrictMode>,
     document.getElementById('root')
